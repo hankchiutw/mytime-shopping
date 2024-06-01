@@ -5,14 +5,15 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 
 @Component({
-  selector: 'app-service-item-edit-button',
+  selector: 'app-service-item-action-menu',
   standalone: true,
   imports: [ButtonModule],
   providers: [DialogService],
-  template: `<p-button (click)="onClickEdit()" label="Edit"></p-button>`,
+  templateUrl: './action-menu.component.html',
+  styleUrl: './action-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditButtonComponent {
+export class ActionMenuComponent {
   @Input() item?: ServiceItem;
 
   private ref: DynamicDialogRef | undefined;
@@ -29,5 +30,14 @@ export class EditButtonComponent {
     this.ref.onClose.subscribe((data?: ServiceItem) => {
       data && this.store.updateItem(data);
     });
+  }
+
+  onClickSelect() {
+    if (!this.item || this.item.inCartCount > 0) return;
+    this.store.updateInCartCount(this.item.id, 1);
+  }
+
+  onClickRemove() {
+    this.item && this.store.removeItem(this.item.id);
   }
 }

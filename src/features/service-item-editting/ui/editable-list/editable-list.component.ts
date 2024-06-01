@@ -1,22 +1,14 @@
-import { ServiceItem, ServiceItemSimpleView, ServiceItemStore } from 'Entities/service-item';
+import { ServiceItemSimpleView, ServiceItemStore } from 'Entities/service-item';
 import { DataViewModule } from 'primeng/dataview';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { EditButtonComponent } from '../edit-button.component';
-import { RemoveButtonComponent } from '../remove-button.component';
-import { SelectButtonComponent } from '../select-button.component';
+import { ActionMenuComponent } from '../action-menu/action-menu.component';
 
 @Component({
   selector: 'app-service-item-editable-list',
   standalone: true,
-  imports: [
-    DataViewModule,
-    ServiceItemSimpleView,
-    EditButtonComponent,
-    SelectButtonComponent,
-    RemoveButtonComponent,
-  ],
+  imports: [DataViewModule, ServiceItemSimpleView, ActionMenuComponent],
   templateUrl: './editable-list.component.html',
   styleUrl: './editable-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
