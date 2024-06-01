@@ -3,10 +3,12 @@ import { DataViewModule } from 'primeng/dataview';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
+import { EditButtonComponent } from '../edit-button.component';
+
 @Component({
   selector: 'app-service-item-editable-list',
   standalone: true,
-  imports: [DataViewModule, ServiceItemSimpleView],
+  imports: [DataViewModule, ServiceItemSimpleView, EditButtonComponent],
   templateUrl: './editable-list.component.html',
   styleUrl: './editable-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

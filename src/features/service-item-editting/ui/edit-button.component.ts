@@ -2,32 +2,34 @@ import { ServiceItem, ServiceItemEditModal, ServiceItemStore } from 'Entities/se
 import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { patchState } from '@ngrx/signals';
-import { addEntity } from '@ngrx/signals/entities';
+import { setEntity } from '@ngrx/signals/entities';
 
 @Component({
-  selector: 'app-service-item-add-button',
+  selector: 'app-service-item-edit-button',
   standalone: true,
   imports: [ButtonModule],
   providers: [DialogService],
-  template: `<p-button (click)="onClickAdd()" label="Add"></p-button>`,
+  template: `<p-button (click)="onClickEdit()" label="Edit"></p-button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddButtonComponent {
+export class EditButtonComponent {
+  @Input() item?: ServiceItem;
+
   private ref: DynamicDialogRef | undefined;
   private store = inject(ServiceItemStore);
 
   constructor(private dialogService: DialogService) {}
 
-  onClickAdd() {
+  onClickEdit() {
     this.ref = this.dialogService.open(ServiceItemEditModal, {
-      header: 'Add a Service Item',
+      header: 'Edit a Service Item',
+      data: { item: this.item },
     });
 
     this.ref.onClose.subscribe((data: ServiceItem) => {
-      data.id = Date.now();
-      patchState(this.store, addEntity(data));
+      patchState(this.store, setEntity(data));
     });
   }
 }

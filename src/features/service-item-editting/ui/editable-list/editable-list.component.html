@@ -2,6 +2,7 @@
   <ng-template pTemplate="list" let-items>
     @for (item of items; track item.name) {
       <app-service-item-simple-view [item]="item"></app-service-item-simple-view>
+      <app-service-item-edit-button [item]="item"></app-service-item-edit-button>
     }
   </ng-template>
 </p-dataView>
