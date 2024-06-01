@@ -1,11 +1,13 @@
 import { patchState, signalStore, withMethods } from '@ngrx/signals';
 import { addEntity, removeEntity, updateEntity, withEntities } from '@ngrx/signals/entities';
 
+import { withPersistentStorage } from './lib/persistent-storage';
 import { ServiceItem } from './types';
 
 export const ServiceItemStore = signalStore(
   { providedIn: 'root' },
   withEntities<ServiceItem>(),
+  withPersistentStorage(),
   withMethods((store) => ({
     addItem(item: ServiceItem) {
       item.id = Date.now();
