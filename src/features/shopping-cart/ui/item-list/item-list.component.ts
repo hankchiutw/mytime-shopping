@@ -2,7 +2,7 @@ import { ServiceItem, ServiceItemSimpleView, ServiceItemStore } from 'Entities/s
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-cart-item-list',
@@ -15,9 +15,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 export class ItemListComponent {
   private store = inject(ServiceItemStore);
 
-  get serviceItems() {
-    return this.store.entities().filter(({ inCartCount }) => inCartCount > 0);
-  }
+  serviceItems = computed(() => this.store.entities().filter(({ inCartCount }) => inCartCount > 0));
+
+  totalPrice = computed(() =>
+    this.serviceItems().reduce((sum, item) => (sum += item.price * item.inCartCount), 0)
+  );
 
   onClickPlus(item: ServiceItem) {
     this.store.updateInCartCount(item.id, item.inCartCount + 1);

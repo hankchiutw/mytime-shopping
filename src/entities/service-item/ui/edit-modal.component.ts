@@ -1,5 +1,6 @@
 import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogComponent, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -10,12 +11,16 @@ import { ServiceItem } from '../types';
 @Component({
   selector: 'app-service-item-edit-modal',
   standalone: true,
-  imports: [ButtonModule, InputTextModule, FormsModule, ReactiveFormsModule],
+  imports: [ButtonModule, InputTextModule, InputNumberModule, FormsModule, ReactiveFormsModule],
   template: `
     <div [formGroup]="formGroup">
       <div>
         <label for="name">Name</label>
         <input pInputText id="name" formControlName="name" />
+      </div>
+      <div>
+        <label for="price">Price</label>
+        <p-inputNumber inputId="integeronly" id="price" formControlName="price" />
       </div>
       <div>
         <p-button (click)="onClickCancel()" label="Cancel" />
@@ -29,6 +34,8 @@ export class EditModalComponent {
   formGroup = this.fb.group({
     id: [-1],
     name: [''],
+    description: [''],
+    price: [0],
     inCartCount: [0],
   });
 

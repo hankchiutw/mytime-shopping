@@ -10,6 +10,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     <div>
       <span>Name: </span><span>{{ item?.name }}</span>
     </div>
+    <div>
+      <span>Price: </span><span>{{ item?.price }}</span>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,4 +1,4 @@
-<p-dataView [value]="serviceItems">
+<p-dataView [value]="serviceItems()">
   <ng-template pTemplate="list" let-items>
     @for (item of items; track item.name) {
       <app-service-item-simple-view [item]="item"></app-service-item-simple-view>
@@ -8,3 +8,6 @@
     }
   </ng-template>
 </p-dataView>
+<div>
+  <span>Total price {{ totalPrice() }}</span>
+</div>
