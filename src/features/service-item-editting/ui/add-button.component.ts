@@ -3,8 +3,6 @@ import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { patchState } from '@ngrx/signals';
-import { addEntity } from '@ngrx/signals/entities';
 
 @Component({
   selector: 'app-service-item-add-button',
@@ -25,9 +23,8 @@ export class AddButtonComponent {
       header: 'Add a Service Item',
     });
 
-    this.ref.onClose.subscribe((data: ServiceItem) => {
-      data.id = Date.now();
-      patchState(this.store, addEntity(data));
+    this.ref.onClose.subscribe((data?: ServiceItem) => {
+      data && this.store.addItem(data);
     });
   }
 }

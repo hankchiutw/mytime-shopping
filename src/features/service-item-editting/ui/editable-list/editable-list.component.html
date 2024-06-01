@@ -3,6 +3,8 @@
     @for (item of items; track item.name) {
       <app-service-item-simple-view [item]="item"></app-service-item-simple-view>
       <app-service-item-edit-button [item]="item"></app-service-item-edit-button>
+      <app-service-item-select-button [item]="item"></app-service-item-select-button>
+      <app-service-item-remove-button [item]="item"></app-service-item-remove-button>
     }
   </ng-template>
 </p-dataView>

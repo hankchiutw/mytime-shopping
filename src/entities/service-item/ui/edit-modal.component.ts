@@ -29,6 +29,7 @@ export class EditModalComponent {
   formGroup = this.fb.group({
     id: [-1],
     name: [''],
+    inCartCount: [0],
   });
 
   private get item(): ServiceItem {

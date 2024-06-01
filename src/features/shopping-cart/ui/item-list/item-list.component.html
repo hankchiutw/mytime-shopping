@@ -1,0 +1,10 @@
+<p-dataView [value]="serviceItems">
+  <ng-template pTemplate="list" let-items>
+    @for (item of items; track item.name) {
+      <app-service-item-simple-view [item]="item"></app-service-item-simple-view>
+      <p-button (click)="onClickMinus(item)" icon="pi pi-minus" severity="secondary"></p-button>
+      <span>{{ item.inCartCount }}</span>
+      <p-button (click)="onClickPlus(item)" icon="pi pi-plus" severity="secondary"></p-button>
+    }
+  </ng-template>
+</p-dataView>

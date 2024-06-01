@@ -3,8 +3,6 @@ import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
-import { patchState } from '@ngrx/signals';
-import { setEntity } from '@ngrx/signals/entities';
 
 @Component({
   selector: 'app-service-item-edit-button',
@@ -28,8 +26,8 @@ export class EditButtonComponent {
       data: { item: this.item },
     });
 
-    this.ref.onClose.subscribe((data: ServiceItem) => {
-      patchState(this.store, setEntity(data));
+    this.ref.onClose.subscribe((data?: ServiceItem) => {
+      data && this.store.updateItem(data);
     });
   }
 }
