@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
   standalone: true,
   imports: [ButtonModule],
   providers: [DialogService],
-  template: `<p-button (click)="onClickAdd()" label="Add"></p-button>`,
+  template: `<p-button (click)="onClickAdd()" label="Add a Service Item"></p-button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddButtonComponent {

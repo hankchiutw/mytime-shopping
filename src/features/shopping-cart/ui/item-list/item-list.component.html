@@ -1,13 +1,43 @@
-<p-dataView [value]="serviceItems()">
-  <ng-template pTemplate="list" let-items>
-    @for (item of items; track item.name) {
-      <app-service-item-simple-view [item]="item"></app-service-item-simple-view>
-      <p-button (click)="onClickMinus(item)" icon="pi pi-minus" severity="secondary"></p-button>
-      <span>{{ item.inCartCount }}</span>
-      <p-button (click)="onClickPlus(item)" icon="pi pi-plus" severity="secondary"></p-button>
-    }
+<p-panel header="Shopping Cart" styleClass="mt-3">
+  <p-dataView [value]="serviceItems()">
+    <ng-template pTemplate="list" let-items>
+      <div class="space-y-4">
+        @for (item of items; track item.id) {
+          <div class="flex">
+            <app-service-item-simple-view
+              [item]="item"
+              class="flex-1"
+            ></app-service-item-simple-view>
+            <p-buttonGroup class="flex justify-items-center">
+              <p-button
+                (click)="onClickMinus(item)"
+                icon="pi pi-minus"
+                severity="secondary"
+                outlined
+                size="small"
+              ></p-button>
+              <p-button
+                severity="secondary"
+                outlined
+                size="small"
+                plain
+                class="pointer-events-none"
+                >{{ item.inCartCount }}</p-button
+              >
+              <p-button
+                (click)="onClickPlus(item)"
+                icon="pi pi-plus"
+                severity="secondary"
+                outlined
+                size="small"
+              ></p-button>
+            </p-buttonGroup>
+          </div>
+        }
+      </div>
+    </ng-template>
+  </p-dataView>
+  <ng-template pTemplate="footer">
+    <p class="text-right">Total price {{ totalPrice() }}</p>
   </ng-template>
-</p-dataView>
-<div>
-  <span>Total price {{ totalPrice() }}</span>
-</div>
+</p-panel>

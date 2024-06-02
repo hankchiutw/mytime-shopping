@@ -13,19 +13,23 @@ import { ServiceItem } from '../types';
   standalone: true,
   imports: [ButtonModule, InputTextModule, InputNumberModule, FormsModule, ReactiveFormsModule],
   template: `
-    <div [formGroup]="formGroup">
-      <div>
+    <div [formGroup]="formGroup" class="space-y-2 text-right">
+      <div class="space-x-2">
         <label for="name">Name</label>
         <input pInputText id="name" formControlName="name" />
       </div>
-      <div>
+      <div class="space-x-2">
+        <label for="description">Description</label>
+        <input pInputText id="description" formControlName="description" />
+      </div>
+      <div class="space-x-2">
         <label for="price">Price</label>
         <p-inputNumber inputId="integeronly" id="price" formControlName="price" />
       </div>
-      <div>
-        <p-button (click)="onClickCancel()" label="Cancel" />
-        <p-button (click)="onClickOk()" label="OK" />
-      </div>
+    </div>
+    <div class="space-x-1 mt-3 text-right">
+      <p-button (click)="onClickCancel()" label="Cancel" />
+      <p-button (click)="onClickOk()" label="OK" />
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,7 +39,7 @@ export class EditModalComponent {
     id: [-1],
     name: [''],
     description: [''],
-    price: [0],
+    price: [1],
     inCartCount: [0],
   });
 

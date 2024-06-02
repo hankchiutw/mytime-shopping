@@ -7,11 +7,16 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <div>
-      <span>Name: </span><span>{{ item?.name }}</span>
-    </div>
-    <div>
-      <span>Price: </span><span>{{ item?.price }}</span>
+    <div class="mb-2">
+      <div>
+        <span>Name: </span><span>{{ item?.name }}</span>
+      </div>
+      <div>
+        <span>Description: </span><span>{{ item?.description }}</span>
+      </div>
+      <div>
+        <span>Price: </span><span>{{ item?.price }}</span>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
