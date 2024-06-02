@@ -1,27 +1,23 @@
-# MytimeShopping
+# MyTime Shopping
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
 
-## Development server
+## Quick start
+```
+pnpm i
+pnpm start
+```
+Navigate to `http://localhost:4200/`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Demo video: [mytime-shopping-demo.mov](./mytime-shopping-demo.mov)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+https://github.com/hankchiutw/mytime-shopping/assets/9998118/0edaed9c-003a-428f-91d8-58e1d09b2066
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Tech stacks
+- Organize code by [Feature-Sliced Design](https://feature-sliced.design/docs)
+- State management: @ngrx/signals
+- UI library: PrimeNG, tailwindcss
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
